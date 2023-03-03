@@ -1,4 +1,4 @@
-import { UserResponse } from '../models/user.model';
+import { UserResponse } from '../types.d';
 
 export const userAdapter = (user: UserResponse) => ({
   id: user._id,
