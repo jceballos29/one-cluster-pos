@@ -12,7 +12,7 @@ import { Login, PointOfSale } from './pages';
 
 let router = createBrowserRouter([
 	{
-		path: '/',
+		path: '',
 		element: (
 			<main className='w-full h-screen overflow-hidden bg-blue-50'>
 				<Outlet />
