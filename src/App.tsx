@@ -9,29 +9,18 @@ import {
 import { PrivateRoutes, PublicRoutes } from './constants/routes';
 import { Login, PointOfSale } from './pages';
 
-
 let router = createBrowserRouter([
 	{
-		path: '',
-		element: (
-			<main className='w-full h-screen overflow-hidden bg-blue-50'>
-				<Outlet />
-			</main>
-		),
-		children: [
-			{
-				index: true,
-				element: <Navigate to={PrivateRoutes.POS} />,
-			},
-			{
-				path: PublicRoutes.LOGIN,
-				element: <Login />,
-			},
-			{
-				path: PrivateRoutes.POS,
-				element: <PointOfSale />,
-			},
-		],
+		path: '/',
+		element: <Navigate to={PrivateRoutes.POS} />,
+	},
+	{
+		path: PublicRoutes.LOGIN,
+		element: <Login />,
+	},
+	{
+		path: PrivateRoutes.POS,
+		element: <PointOfSale />,
 	},
 ]);
 
@@ -40,5 +29,9 @@ if (import.meta.hot) {
 }
 
 export default function App() {
-	return <RouterProvider router={router} />;
+	return (
+		<main className='w-full h-screen overflow-hidden bg-blue-50'>
+			<RouterProvider router={router} />
+		</main>
+	);
 }
