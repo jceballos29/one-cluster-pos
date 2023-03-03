@@ -3,29 +3,11 @@
 import {
 	BrowserRouter,
 	Navigate,
-	Outlet,
 	Route,
-	RouterProvider,
-	Routes,
-	createBrowserRouter,
+	Routes
 } from 'react-router-dom';
 import { PrivateRoutes, PublicRoutes } from './constants/routes';
 import { Login, PointOfSale } from './pages';
-
-// let router = createBrowserRouter([
-// 	{
-// 		path: '/',
-// 		element: <Navigate to={PrivateRoutes.POS} />,
-// 	},
-// 	{
-// 		path: PublicRoutes.LOGIN,
-// 		element: <Login />,
-// 	},
-// 	{
-// 		path: PrivateRoutes.POS,
-// 		element: <PointOfSale />,
-// 	},
-// ]);
 
 export default function App() {
 	return (
