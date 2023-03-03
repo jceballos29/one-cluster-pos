@@ -1,12 +1,9 @@
 /** @format */
 
-import 'react-multi-carousel/lib/styles.css';
+import { categories, products } from '../../data';
 import { Navbar } from './components';
 
-import { categories, products } from '../../data';
-
 function PointOfSale() {
-
 	return (
 		<div className='w-full h-full flex overflow-hidden relative'>
 			<Navbar />
@@ -18,18 +15,24 @@ function PointOfSale() {
 								Categorías
 							</h3>
 							<div className='h-full flex-grow  w-full'>
-								{
-									categories.map( category => (
-										<div key={category.id} className='w-full h-12 bg-white shadow rounded-lg mb-2 last:mb-0 px-6 flex items-center justify-between'>
-											<h4 className='font-medium capitalize text-gray-900'>{category.name}</h4>
-											<span className='flex px-1.5 py-1 bg-gray-200 rounded item-center justify-center text-sm leading-[14px] text-gray-500'>
-												{
-													products.filter( product => product.category === category.id).length
-												}
-											</span>
-										</div>
-									))
-								}
+								{categories.map((category) => (
+									<div
+										key={category.id}
+										className='w-full h-12 bg-white shadow rounded-lg mb-2 last:mb-0 px-6 flex items-center justify-between'
+									>
+										<h4 className='font-medium capitalize text-gray-900'>
+											{category.name}
+										</h4>
+										<span className='flex px-1.5 py-1 bg-gray-200 rounded item-center justify-center text-sm leading-[14px] text-gray-500'>
+											{
+												products.filter(
+													(product) =>
+														product.category === category.id,
+												).length
+											}
+										</span>
+									</div>
+								))}
 							</div>
 						</div>
 					</div>
