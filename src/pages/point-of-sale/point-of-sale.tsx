@@ -1,11 +1,51 @@
 /** @format */
 
-import { categories, products } from '../../data';
-import { Navbar } from './components';
+import {
+	categoriesAdapter,
+	clientsAdapter,
+	databaseAdapter,
+	productsAdapter,
+} from '@/adapters/pos.adapter';
+import { Loader } from '@/components';
+import { setPOS } from '@/redux/states/pos.slice';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import Navbar from './components/navbar';
 
-function PointOfSale() {
-	return (
-		<div className='w-full h-full flex overflow-hidden relative'>
+export interface PointOfSaleProps {}
+
+const PointOfSale: React.FC<PointOfSaleProps> = () => {
+	const [loading, setLoading] = useState(true);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		axios
+			.all([
+				axios.get('/api/categories'),
+				axios.get('/api/products'),
+				axios.get('/api/warehouses/detail'),
+				axios.get('/api/clients'),
+			])
+			.then(
+				axios.spread((categories, products, warehouses, clients) => {
+					dispatch(
+						setPOS({
+							categories: categoriesAdapter(categories.data),
+							products: productsAdapter(products.data),
+							warehouse: databaseAdapter(warehouses.data),
+							clients: clientsAdapter(clients.data),
+						}),
+					);
+					setLoading(false);
+				}),
+			);
+	}, []);
+
+	return loading ? (
+		<Loader />
+	) : (
+		<div className='w-full h-full flex overflow-hidden relative bg-blue-50 dark:bg-slate-800 transition-colors'>
 			<Navbar />
 			<div className='h-full w-full flex overflow-hidden p-6 pt-[96px] pr-[512px] gap-6'>
 				<div className='w-3/4 h-full flex gap-6'>
@@ -14,26 +54,7 @@ function PointOfSale() {
 							<h3 className='font-semibold text-xl mb-6'>
 								Categorías
 							</h3>
-							<div className='h-full flex-grow  w-full'>
-								{categories.map((category) => (
-									<div
-										key={category.id}
-										className='w-full h-12 bg-white shadow rounded-lg mb-2 last:mb-0 px-6 flex items-center justify-between'
-									>
-										<h4 className='font-medium capitalize text-gray-900'>
-											{category.name}
-										</h4>
-										<span className='flex px-1.5 py-1 bg-gray-200 rounded item-center justify-center text-sm leading-[14px] text-gray-500'>
-											{
-												products.filter(
-													(product) =>
-														product.category === category.id,
-												).length
-											}
-										</span>
-									</div>
-								))}
-							</div>
+							<div className='h-full flex-grow  w-full'></div>
 						</div>
 					</div>
 					<div className='w-3/4 h-full bg-blue-50 overflow-hidden'>
@@ -48,6 +69,6 @@ function PointOfSale() {
 			{/* <div className="absolute top-0 left-0 w-full h-full bg-black/30"></div> */}
 		</div>
 	);
-}
+};
 
 export default PointOfSale;

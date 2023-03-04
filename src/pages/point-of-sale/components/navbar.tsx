@@ -1,24 +1,22 @@
 /** @format */
 
 import React from 'react';
+import FullScreenButton from './full-screen-button';
+import ThemeButton from './theme-button';
+import UserMenu from './user-menu';
+import TerminalSelector from './terminal-selector';
 
-const Navbar = () => {
+export interface NavbarProps {}
+
+const Navbar: React.FC<NavbarProps> = () => {
 	return (
 		<nav className='w-full fixed z-10 flex items-start justify-between p-6 pr-[512px]'>
-			<div>
-				<h2 className='text-3xl leading-none text-gray-900 font-bold'>
-					Database
-				</h2>
-				<p className='text-lg leading-none text-gray-500'>
-					Termina 1
-				</p>
-			</div>
+			<TerminalSelector />
 			<div className='w-full max-w-lg h-10 bg-white shadow rounded-xl'></div>
 			<div className='flex gap-3'>
-				<div className='w-10 h-10 bg-white shadow rounded-xl'></div>
-				<div className='w-10 h-10 bg-white shadow rounded-xl'></div>
-				<div className='w-10 h-10 bg-white shadow rounded-xl'></div>
-				<div className='w-10 h-10 bg-white shadow rounded-xl'></div>
+				<FullScreenButton width={10} />
+				<ThemeButton width={10} />
+				<UserMenu />
 			</div>
 		</nav>
 	);

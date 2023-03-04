@@ -9,11 +9,11 @@ export interface SelectorItemPops {
 	description: string;
 }
 
-function SelectorItem({
+const SelectorItem: React.FC<SelectorItemPops> = ({
 	path,
 	title,
 	description,
-}: SelectorItemPops) {
+}) => {
 	const navigate = useNavigate();
 
 	const handlerRedirect = () => {
@@ -35,6 +35,6 @@ function SelectorItem({
 			</div>
 		</div>
 	);
-}
+};
 
 export default SelectorItem;
