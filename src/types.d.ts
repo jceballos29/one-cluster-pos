@@ -40,8 +40,17 @@ export const UserEmpty: User = {
 };
 
 export interface LoginResponse {
-  user: UserResponse;
-  database: string;
-  session: string;
-  token: string;
+	user: UserResponse;
+	database: string;
+	session: string;
+	token: string;
+};
+
+export type Product = {
+	id: number,
+	name: string,
+	stock: number,
+	price: { retail: number, wholesale: number },
+	warehouse: number | string,
+	category: number,
 }

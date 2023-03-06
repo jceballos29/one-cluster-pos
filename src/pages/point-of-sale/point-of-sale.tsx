@@ -1,7 +1,7 @@
 /** @format */
 
 import { categories, products } from '../../data';
-import { Navbar } from './components';
+import { Navbar, Products } from './components';
 
 function PointOfSale() {
 	return (
@@ -9,6 +9,10 @@ function PointOfSale() {
 			<Navbar />
 			<div className='h-full w-full flex overflow-hidden p-6 pt-[96px] pr-[512px] gap-6'>
 				<div className='w-3/4 h-full flex gap-6'>
+					<div className='w-3/4 h-full bg-blue-50 overflow-hidden'>
+						<h3 className='font-semibold text-xl mb-2'>Productos</h3>
+						<Products />
+					</div>
 					<div className='w-1/4 h-full'>
 						<div className='w-full h-full flex flex-col'>
 							<h3 className='font-semibold text-xl mb-6'>
@@ -35,9 +39,6 @@ function PointOfSale() {
 								))}
 							</div>
 						</div>
-					</div>
-					<div className='w-3/4 h-full bg-blue-50 overflow-hidden'>
-						<h3 className='font-semibold text-xl mb-2'>Productos</h3>
 					</div>
 				</div>
 				<div className='w-1/4 h-full bg-red-100'></div>
