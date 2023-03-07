@@ -11,7 +11,7 @@ export interface NavbarProps {}
 
 const Navbar: React.FC<NavbarProps> = () => {
 	return (
-		<nav className='w-full fixed z-10 flex items-start justify-between p-6 pr-[512px]'>
+		<nav className='w-full fixed z-10 flex items-start justify-between p-6 pr-[448px]'>
 			<TerminalSelector />
 			<Search />
 			<div className='flex gap-3'>

@@ -40,7 +40,7 @@ const ThemeButton: React.FC<ThemeButtonProps> = ({ width }) => {
 	return (
 		<button
 			onClick={handleTheme}
-			className={`w-${width} aspect-square bg-white dark:bg-slate-500 transition-colors shadow rounded-lg flex items-center justify-center hover:bg-blue-100 dark:hover:bg-slate-400`}
+			className={`w-${width} aspect-square bg-white dark:bg-slate-500 transition-colors shadow rounded-lg flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-400`}
 		>
 			{dark ? (
 				<SunIcon className='w-5 h-5 text-slate-900 dark:text-slate-50' />

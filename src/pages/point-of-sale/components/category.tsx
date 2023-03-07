@@ -41,8 +41,8 @@ const Category: React.FC<CategoryProps> = ({ element }) => {
 			onClick={() => handleSelectCategory(element.id)}
 			className={`w-full ${
 				selectedCategory === element.id
-					? 'bg-blue-100 dark:bg-slate-600'
-					: 'bg-white dark:bg-slate-500 hover:bg-blue-100 dark:hover:bg-slate-400'
+					? 'bg-slate-200 dark:bg-slate-600'
+					: 'bg-white dark:bg-slate-500 hover:bg-slate-100 dark:hover:bg-slate-400'
 			} rounded-lg shadow px-4 py-3 flex items-center justify-between text-left transition-colors `}
 		>
 			<h4 className='text-slate-900 dark:text-slate-50 text-sm font-medium capitalize'>
@@ -51,7 +51,7 @@ const Category: React.FC<CategoryProps> = ({ element }) => {
 			<span
 				className={`text-slate-500 dark:text-slate-50 text-xs w-4 h-4 font-light ${
 					selectedCategory === element.id
-						? 'bg-blue-100 dark:bg-slate-600'
+						? 'bg-slate-200 dark:bg-slate-600'
 						: 'bg-slate-200 dark:bg-slate-600'
 				} rounded flex items-center justify-center`}
 			>
