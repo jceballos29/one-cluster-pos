@@ -11,10 +11,10 @@ import { setPOS } from '@/redux/states/pos.slice';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Categories, Navbar, Products } from './components';
+import { Categories, Navbar, Products, Keypad } from './components';
 import { AppStore } from '@/redux/store';
 
-export interface PointOfSaleProps {}
+export interface PointOfSaleProps { }
 
 const PointOfSale: React.FC<PointOfSaleProps> = () => {
 	const [loading, setLoading] = useState(true);
@@ -54,7 +54,9 @@ const PointOfSale: React.FC<PointOfSaleProps> = () => {
 					<Categories />
 					<Products />
 				</div>
-				<div className='w-1/4 h-full'></div>
+				<div className='w-1/4 h-full'>
+					<Keypad />
+				</div>
 			</div>
 			<div className='absolute top-0 right-0 h-full w-[448px] p-6 z-20'>
 				<div className='w-full h-full bg-slate-300 shadow-md rounded-xl'></div>
