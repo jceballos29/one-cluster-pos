@@ -9,11 +9,11 @@ export interface SelectorItemPops {
 	description: string;
 }
 
-function SelectorItem({
+const SelectorItem: React.FC<SelectorItemPops> = ({
 	path,
 	title,
 	description,
-}: SelectorItemPops) {
+}) => {
 	const navigate = useNavigate();
 
 	const handlerRedirect = () => {
@@ -28,13 +28,15 @@ function SelectorItem({
 		>
 			<div className='absolute w-28 aspect-square rounded-full bg-blue-900 -translate-x-6 -translate-y-1/2 top-1/2' />
 			<div className='p-5 pl-28'>
-				<h3 className='text-gray-900 font-medium text-lg'>{title}</h3>
-				<p className='text-regular text-gray-500 text-sm'>
+				<h3 className='text-slate-900 font-medium text-lg'>
+					{title}
+				</h3>
+				<p className='text-regular text-slate-500 text-sm'>
 					{description}
 				</p>
 			</div>
 		</div>
 	);
-}
+};
 
 export default SelectorItem;

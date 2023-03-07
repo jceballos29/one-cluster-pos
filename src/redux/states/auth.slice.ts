@@ -6,24 +6,22 @@ import { User, UserEmpty } from '../../types.d';
 export interface AuthState {
 	isAuthenticated: boolean;
 	user: User;
-	session: string;
-	database: string;
-	token: string;
 }
 
 export const initialState: AuthState = {
 	isAuthenticated: false,
 	user: UserEmpty,
-	session: '',
-	database: '',
-	token: '',
 };
 
 const authSlice = createSlice({
 	name: 'auth',
 	initialState,
 	reducers: {
-		login: (state, action) => action.payload,
+		login: (state, action) => ({
+			...state,
+			isAuthenticated: true,
+			user: action.payload,
+		}),
 		logout: () => initialState,
 	},
 });

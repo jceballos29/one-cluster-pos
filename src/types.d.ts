@@ -1,4 +1,7 @@
 /** @format */
+
+import { products } from './data';
+/** @format */
 import { AxiosResponse } from 'axios';
 
 export interface AxiosCall<T> {
@@ -9,14 +12,98 @@ export interface AxiosCall<T> {
 export type Database = {
 	id: string;
 	name: string;
+	allowedUsers?: string[];
+	terminals?: {
+		_id: string;
+		code: string;
+		base: number;
+	}[];
 };
 
-export type DatabasesResponse = Array<{
+export type DatabasesResponse = {
 	_id: string;
 	name: string;
-}>;
+	createdAt: string;
+	updatedAt: string;
+}[];
+
+export type DatabaseResponse = {
+	_id: string;
+	name: string;
+	allowedUsers: string[];
+	terminals: {
+		_id: string;
+		code: string;
+		base: number;
+	}[];
+	createdAt: string;
+	updatedAt: string;
+};
+
+export type Terminal = {
+	_id: string;
+	code: string;
+	base: number;
+}
+
+export type Category = {
+	id: string;
+	name: string;
+	products: number;
+};
+
+export type CategoriesResponse = {
+	_id: string;
+	name: string;
+	products: string[];
+	warehouse: string;
+	createdAt: string;
+	updatedAt: string;
+}[];
+
+export type Product = {
+	id: string;
+	name: string;
+	image: string;
+	price: {
+		retail: number;
+		wholesale: number;
+	},
+	quantity: number
+	category: string;
+}
+
+export type ProductResponse = {
+	_id: string;
+	name: string;
+	image: string;
+	price: {
+		retail: number;
+		wholesale: number;
+	},
+	quantity: number
+	warehouse: string;
+	category: string;
+	createdAt: string;
+	updatedAt: string;
+}
+
+export type Client = {
+	id: string;
+	name: string;
+	type: 'retail' | 'wholesale';
+}
+
+export type ClientResponse = {
+	_id: string;
+	name: string;
+	type: 'retail' | 'wholesale';
+	createdAt: string;
+	updatedAt: string;
+}
 
 export type User = {
+	avatar: string;
 	id: string;
 	name: string;
 	username: string;
@@ -28,6 +115,7 @@ export type UserResponse = {
 	name: string;
 	username: string;
 	role: string;
+	avatar: string;
 	createdAt: string;
 	updatedAt: string;
 };
@@ -39,18 +127,13 @@ export const UserEmpty: User = {
 	role: '',
 };
 
-export interface LoginResponse {
+export type LoginResponse = {
 	user: UserResponse;
-	database: string;
-	session: string;
 	token: string;
 };
 
-export type Product = {
-	id: number,
-	name: string,
-	stock: number,
-	price: { retail: number, wholesale: number },
-	warehouse: number | string,
-	category: number,
-}
+export type LoginRequest = {
+	username: string;
+	password: string;
+	database: string;
+};
