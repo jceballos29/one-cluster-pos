@@ -6,6 +6,7 @@ import {
 } from '@/redux/states/pos.slice';
 import { AppStore } from '@/redux/store';
 import { Product } from '@/types';
+import { formatCurrency } from '@/utilities/cop-format';
 import { Combobox, Transition } from '@headlessui/react';
 import {
 	MagnifyingGlassIcon,
@@ -95,7 +96,7 @@ const Search: React.FC = () => {
 							filteredProducts.map((product) => (
 								<button
 									key={product.id}
-									className='relative flex items-center justify-between w-full text-left select-none py-2 px-11 text-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600'
+									className='relative flex items-center justify-between w-full text-left select-none py-2 px-11 text-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 capitalize'
 									type='button'
 									onClick={() => {
 										dispatch(filterProducts([product] as Product[]));
@@ -104,11 +105,11 @@ const Search: React.FC = () => {
 										setQuery('');
 									}}
 								>
-									{product.name}
+									{product.name} 
 									<span
 										className={`text-slate-400 dark:text-slate-400 font-light italic`}
 									>
-										$ {product.price['retail']}
+										{formatCurrency(product.price['retail'])}
 									</span>
 								</button>
 							))
