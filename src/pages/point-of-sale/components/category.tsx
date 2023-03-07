@@ -48,7 +48,13 @@ const Category: React.FC<CategoryProps> = ({ element }) => {
 			<h4 className='text-slate-900 dark:text-slate-50 text-sm font-medium capitalize'>
 				{element.name}
 			</h4>
-			<span className={`text-slate-500 dark:text-slate-50 text-xs w-4 h-4 font-light ${selectedCategory === element.id ? 'bg-blue-100 dark:bg-slate-600' : 'bg-slate-200 dark:bg-slate-600'} rounded flex items-center justify-center`}>
+			<span
+				className={`text-slate-500 dark:text-slate-50 text-xs w-4 h-4 font-light ${
+					selectedCategory === element.id
+						? 'bg-blue-100 dark:bg-slate-600'
+						: 'bg-slate-200 dark:bg-slate-600'
+				} rounded flex items-center justify-center`}
+			>
 				{element.products}
 			</span>
 		</button>
