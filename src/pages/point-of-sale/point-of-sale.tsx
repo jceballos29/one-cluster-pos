@@ -10,14 +10,16 @@ import { Loader } from '@/components';
 import { setPOS } from '@/redux/states/pos.slice';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import Navbar from './components/navbar';
+import { useDispatch, useSelector } from 'react-redux';
+import { Categories, Navbar } from './components';
+import { AppStore } from '@/redux/store';
 
 export interface PointOfSaleProps {}
 
 const PointOfSale: React.FC<PointOfSaleProps> = () => {
 	const [loading, setLoading] = useState(true);
 	const dispatch = useDispatch();
+	const { filteredProducts } = useSelector((store: AppStore) => store.pos)
 
 	useEffect(() => {
 		axios
@@ -35,6 +37,7 @@ const PointOfSale: React.FC<PointOfSaleProps> = () => {
 							products: productsAdapter(products.data),
 							warehouse: databaseAdapter(warehouses.data),
 							clients: clientsAdapter(clients.data),
+							filteredProducts: productsAdapter(products.data),
 						}),
 					);
 					setLoading(false);
@@ -45,20 +48,20 @@ const PointOfSale: React.FC<PointOfSaleProps> = () => {
 	return loading ? (
 		<Loader />
 	) : (
-		<div className='w-full h-full flex overflow-hidden relative bg-blue-50 dark:bg-slate-800 transition-colors'>
+		<div className='w-full h-full flex overflow-hidden relative bg-blue-50 dark:bg-slate-900 transition-colors'>
 			<Navbar />
 			<div className='h-full w-full flex overflow-hidden p-6 pt-[96px] pr-[512px] gap-6'>
-				<div className='w-3/4 h-full flex gap-6'>
-					<div className='w-1/4 h-full'>
-						<div className='w-full h-full flex flex-col'>
-							<h3 className='font-semibold text-xl mb-6'>
-								Categorías
-							</h3>
-							<div className='h-full flex-grow  w-full'></div>
+				<div className='w-3/4 h-full flex'>
+					<Categories />
+					<div className='w-4/5 h-full bg-blue-50 flex flex-col overflow-hidden'>
+						<h3 className='font-semibold text-2xl mb-2 text-slate-900'>Productos</h3>
+						<div className='w-full h-full flex-grow'>
+							{
+								filteredProducts.map((product) => (
+									<div key={product.id}>{product.name}</div>
+								))
+							}
 						</div>
-					</div>
-					<div className='w-3/4 h-full bg-blue-50 overflow-hidden'>
-						<h3 className='font-semibold text-xl mb-2'>Productos</h3>
 					</div>
 				</div>
 				<div className='w-1/4 h-full bg-red-100'></div>

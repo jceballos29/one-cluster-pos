@@ -105,10 +105,10 @@ const Login: React.FC<LoginProps> = () => {
 						</h2>
 						<div className='flex flex-col mb-3'>
 							<label
-								className='text-sm font-bold text-gray-700 flex flex-col items-start w-full'
+								className='text-sm font-bold text-slate-700 flex flex-col items-start w-full'
 								htmlFor='username'
 							>
-								<span className='flex w-full text-sm text-gray-700 font-semibold mb-1'>
+								<span className='flex w-full text-sm text-slate-700 font-semibold mb-1'>
 									Base de datos
 									{errors.database && (
 										<span className='text-red-500 text-xs ml-auto font-light'>
@@ -136,8 +136,8 @@ const Login: React.FC<LoginProps> = () => {
 											<span
 												className={`block truncate ${
 													selectedDatabase
-														? 'text-gray-900 capitalize'
-														: 'text-gray-400 font-light'
+														? 'text-slate-900 capitalize'
+														: 'text-slate-400 font-light'
 												}`}
 											>
 												{selectedDatabase
@@ -146,7 +146,7 @@ const Login: React.FC<LoginProps> = () => {
 											</span>
 											<span className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2'>
 												<ChevronUpDownIcon
-													className='h-5 w-5 text-gray-400'
+													className='h-5 w-5 text-slate-400'
 													aria-hidden='true'
 												/>
 											</span>
@@ -164,7 +164,7 @@ const Login: React.FC<LoginProps> = () => {
 															`relative cursor-default select-none py-2 pl-10 pr-4 ${
 																active
 																	? 'bg-blue-100 text-blue-900'
-																	: 'text-gray-900'
+																	: 'text-slate-900'
 															}`
 														}
 														value={item}
@@ -200,10 +200,10 @@ const Login: React.FC<LoginProps> = () => {
 						</div>
 						<div className='flex flex-col mb-3'>
 							<label
-								className='text-sm font-bold text-gray-700 flex flex-col items-start w-full'
+								className='text-sm font-bold text-slate-700 flex flex-col items-start w-full'
 								htmlFor='username'
 							>
-								<span className='flex w-full text-sm text-gray-700 font-semibold mb-1'>
+								<span className='flex w-full text-sm text-slate-700 font-semibold mb-1'>
 									Usuario
 									{errors.username && (
 										<span className='text-red-500 text-xs ml-auto font-light'>
@@ -212,11 +212,11 @@ const Login: React.FC<LoginProps> = () => {
 									)}
 								</span>
 								<input
-									className={`w-full px-3 py-2 text-sm leading-6 font-normal text-gray-900 border ${
+									className={`w-full px-3 py-2 text-sm leading-6 font-normal text-slate-900 border ${
 										errors.username
 											? 'border-red-500'
 											: 'border-gray-300'
-									} rounded shadow appearance-none focus:outline-none focus:shadow-outline focus:border-blue-500 focus:ring-blue-500 placeholder:font-light placeholder:text-gray-400`}
+									} rounded shadow appearance-none focus:outline-none focus:shadow-outline focus:border-blue-500 focus:ring-blue-500 placeholder:font-light placeholder:text-slate-400`}
 									id='username'
 									type='text'
 									placeholder='usuario'
@@ -226,10 +226,10 @@ const Login: React.FC<LoginProps> = () => {
 						</div>
 						<div className='flex flex-col mb-14'>
 							<label
-								className='mb-2 text-sm font-bold text-gray-700 flex flex-col items-start w-full'
+								className='mb-2 text-sm font-bold text-slate-700 flex flex-col items-start w-full'
 								htmlFor='password'
 							>
-								<span className='flex w-full text-sm text-gray-700 font-semibold mb-1'>
+								<span className='flex w-full text-sm text-slate-700 font-semibold mb-1'>
 									Contraseña
 									{errors.password && (
 										<span className='text-red-500 text-xs ml-auto font-light'>
@@ -238,11 +238,11 @@ const Login: React.FC<LoginProps> = () => {
 									)}
 								</span>
 								<input
-									className={`w-full px-3 py-2 text-sm leading-6 font-normal text-gray-900 border ${
+									className={`w-full px-3 py-2 text-sm leading-6 font-normal text-slate-900 border ${
 										errors.password
 											? 'border-red-500'
 											: 'border-gray-300'
-									} rounded shadow appearance-none focus:outline-none focus:shadow-outline focus:border-blue-500 focus:ring-blue-500 placeholder:font-light placeholder:text-gray-400`}
+									} rounded shadow appearance-none focus:outline-none focus:shadow-outline focus:border-blue-500 focus:ring-blue-500 placeholder:font-light placeholder:text-slate-400`}
 									id='password'
 									type='password'
 									placeholder='***********'
@@ -253,7 +253,7 @@ const Login: React.FC<LoginProps> = () => {
 						<button
 							type='submit'
 							className={`w-full flex items-center justify-center text-white font-medium ${
-								logging ? 'bg-gray-500' : 'bg-blue-600'
+								logging ? 'bg-slate-500' : 'bg-blue-600'
 							} rounded-md px-3 py-2.5`}
 							disabled={logging}
 						>
@@ -268,7 +268,7 @@ const Login: React.FC<LoginProps> = () => {
 						</button>
 					</form>
 				</div>
-				<p className='text-gray-400 font-normal text-sm leading-5 '>
+				<p className='text-slate-400 font-normal text-sm leading-5 '>
 					{new Date().getFullYear()} - One Cluster &#169;
 				</p>
 			</div>

@@ -30,7 +30,7 @@ const Selector: React.FC<SelectorProps> = () => {
 					/>
 				</div>
 			</div>
-			<p className='text-gray-400 font-normal text-sm leading-5 '>
+			<p className='text-slate-400 font-normal text-sm leading-5 '>
 				{new Date().getFullYear()} - One Cluster &#169;
 			</p>
 		</div>

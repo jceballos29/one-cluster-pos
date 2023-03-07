@@ -54,10 +54,10 @@ const UserMenu: React.FC = () => {
 								/>
 							</figure>
 							<div className='ml-4'>
-								<h4 className='font-medium text-lg text-gray-900 dark:text-white leading-none capitalize'>
+								<h4 className='font-medium text-lg text-slate-900 dark:text-white leading-none capitalize'>
 									{user?.name}
 								</h4>
-								<p className='text-sm font-light text-gray-500 dark:text-white capitalize'>
+								<p className='text-sm font-light text-slate-500 dark:text-white capitalize'>
 									{user?.role}
 								</p>
 							</div>
@@ -67,7 +67,7 @@ const UserMenu: React.FC = () => {
 						<button
 							onClick={handleLogout}
 							className={`w-full flex items-center justify-center text-white font-medium ${
-								loading ? 'bg-gray-500' : 'bg-red-600'
+								loading ? 'bg-slate-500' : 'bg-red-600'
 							} rounded-md px-3 py-2 mt-4`}
 							disabled={loading}
 						>

@@ -36,7 +36,7 @@ const TerminalsModal: React.FC<TerminalsModalProps> = ({
 		<Transition appear show={show} as={Fragment}>
 			<Dialog
 				as='div'
-				onClose={() => handleShow(false)}
+				onClose={() => (terminal ? handleShow(false) : null)}
 				className='relative z-30'
 			>
 				<Transition.Child
@@ -62,10 +62,10 @@ const TerminalsModal: React.FC<TerminalsModalProps> = ({
 							leaveFrom='opacity-100 scale-100'
 							leaveTo='opacity-0 scale-95'
 						>
-							<Dialog.Panel className='w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
+							<Dialog.Panel className='w-full max-w-md transform overflow-hidden rounded-2xl bg-blue-50 dark:bg-slate-900 p-6 text-left align-middle shadow-xl transition-all'>
 								<Dialog.Title
 									as='h3'
-									className='text-lg font-medium leading-6 text-gray-900'
+									className='text-lg font-medium leading-6 text-slate-900 dark:text-slate-50'
 								>
 									Selecciona una terminal
 								</Dialog.Title>
@@ -85,13 +85,13 @@ const TerminalsModal: React.FC<TerminalsModalProps> = ({
 													className={({ active, checked }) =>
 														`${
 															active
-																? 'ring-2 ring-offset-2 ring-offset-blue-300 ring-white ring-opacity-60'
+																? 'ring-2 ring-offset-2 ring-offset-blue-300 ring-white ring-opacity-60 dark:ring-slate-500 dark:ring-offset-slate-300'
 																: ''
 														}
                                 ${
 																	checked
-																		? 'bg-blue-600 bg-opacity-75 text-white'
-																		: 'bg-white text-gray-900 hover:bg-blue-100'
+																		? 'bg-blue-600 bg-opacity-75 text-white dark:bg-slate-600 dark:text-slate-50'
+																		: 'bg-white text-slate-900 hover:bg-blue-100 dark:bg-slate-500 dark:text-slate-50 dark:hover:bg-slate-400 transition-colors'
 																}
                                 relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex focus:outline-none `
 													}
@@ -106,7 +106,7 @@ const TerminalsModal: React.FC<TerminalsModalProps> = ({
 																			className={`font-bold ${
 																				checked
 																					? 'text-white'
-																					: 'text-gray-900'
+																					: 'text-slate-900 dark:text-slate-50'
 																			}`}
 																		>
 																			Terminal {terminal.code}
@@ -115,8 +115,8 @@ const TerminalsModal: React.FC<TerminalsModalProps> = ({
 																			as='span'
 																			className={`inline text-xs ${
 																				checked
-																					? 'text-blue-200'
-																					: 'text-gray-500'
+																					? 'text-blue-200 dark:text-slate-400'
+																					: 'text-slate-500 dark:text-slate-300'
 																			}`}
 																		>
 																			<strong>Base:</strong> ${' '}
@@ -125,7 +125,7 @@ const TerminalsModal: React.FC<TerminalsModalProps> = ({
 																	</div>
 																</div>
 																{checked && (
-																	<div className='flex-shrink-0 text-white'>
+																	<div className='flex-shrink-0 text-white dark:text-slate-50'>
 																		<CheckIcon
 																			className='h-6 w-6'
 																			aria-hidden='true'

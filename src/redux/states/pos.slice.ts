@@ -11,20 +11,24 @@ import {
 
 export interface PosState {
 	warehouse: Database | null;
-	categories: Category[] | null;
-	products: Product[] | null;
-	clients: Client[] | null;
+	categories: Category[];
+	products: Product[];
+	clients: Client[];
 	terminal: Terminal | null;
-  filteredProducts: Product[] | null;
+	filteredProducts: Product[];
+	selectedCategory: string | null;
+	filter: string;
 }
 
 const initialState: PosState = {
 	warehouse: null,
-	categories: null,
-	products: null,
-	clients: null,
+	categories: [],
+	products: [],
+	clients: [],
 	terminal: null,
-  filteredProducts: null,
+	filteredProducts: [],
+	selectedCategory: null,
+	filter: '',
 };
 
 const databaseSlice = createSlice({
@@ -34,26 +38,53 @@ const databaseSlice = createSlice({
 		setPOS: (state, action) => {
 			return {
 				...state,
-        warehouse: action.payload.warehouse,
-        categories: action.payload.categories,
-        products: action.payload.products,
-        clients: action.payload.clients,
-        terminal: null,
-        filteredProducts: action.payload.products
+				warehouse: action.payload.warehouse,
+				categories: action.payload.categories,
+				products: action.payload.products,
+				clients: action.payload.clients,
+				terminal: null,
+				filteredProducts: action.payload.products,
 			};
 		},
 
-    setTerminal: (state, action) => {
-      return {
-        ...state,
-        terminal: action.payload
-      }
-    },
+		setTerminal: (state, action) => {
+			return {
+				...state,
+				terminal: action.payload,
+			};
+		},
+
+		selectCategory: (state, action) => {
+			return {
+				...state,
+				selectedCategory: action.payload,
+			};
+		},
+		filterProducts: (state, action) => {
+			return {
+				...state,
+				filteredProducts: action.payload,
+			};
+		},
+
+		setFilter: (state, action) => {
+			return {
+				...state,
+				filter: action.payload,
+			};
+		},
 
 		resetPOS: (state, action) => initialState,
 	},
 });
 
-export const { setPOS, setTerminal } = databaseSlice.actions;
+export const {
+	setPOS,
+	setTerminal,
+	selectCategory,
+	resetPOS,
+	filterProducts,
+	setFilter,
+} = databaseSlice.actions;
 
 export default databaseSlice.reducer;

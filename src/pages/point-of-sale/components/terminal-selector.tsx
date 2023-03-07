@@ -45,11 +45,11 @@ const TerminalSelector: React.FC = () => {
 					onClick={() => handleShow(true)}
 					className='select-none text-left'
 				>
-					<h2 className='text-3xl leading-none text-gray-900 font-bold capitalize'>
+					<h2 className='text-3xl leading-none text-slate-900 dark:text-slate-50 font-bold capitalize'>
 						{warehouse?.name}
 					</h2>
 					{terminal && (
-						<p className='text-lg leading-none text-gray-500'>
+						<p className='text-lg leading-none text-slate-500 dark:text-slate-400'>
 							Terminal {terminal?.code}
 						</p>
 					)}

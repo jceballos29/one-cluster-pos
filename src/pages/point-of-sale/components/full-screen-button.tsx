@@ -32,12 +32,12 @@ const FullScreenButton: React.FC<FullScreenButtonProps> = ({
 	return (
 		<button
 			onClick={handleFullScreen}
-			className={`w-${width} aspect-square bg-white dark:bg-slate-500 transition-colors shadow rounded-lg flex items-center justify-center`}
+			className={`w-${width} aspect-square bg-white dark:bg-slate-500 transition-colors shadow rounded-lg flex items-center justify-center hover:bg-blue-100 dark:hover:bg-slate-400`}
 		>
 			{fullScreen ? (
-				<ArrowsPointingInIcon className='w-5 h-5 text-gray-900 dark:text-white' />
+				<ArrowsPointingInIcon className='w-5 h-5 text-slate-900 dark:text-slate-50' />
 			) : (
-				<ArrowsPointingOutIcon className='w-5 h-5 text-gray-900 dark:text-white' />
+				<ArrowsPointingOutIcon className='w-5 h-5 text-slate-900 dark:text-slate-50' />
 			)}
 		</button>
 	);
