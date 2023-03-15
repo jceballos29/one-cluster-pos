@@ -1,6 +1,6 @@
 /** @format */
 
-import { setTerminal } from '@/redux/states/pos.slice';
+import { setType, setDiscountOption, DiscountOption } from '@/redux/states/display.slice';
 import { AppStore } from '@/redux/store';
 import { Terminal } from '@/types';
 import { Dialog, Transition, RadioGroup } from '@headlessui/react';
@@ -17,29 +17,32 @@ const DiscountModal: React.FC<DiscountModalProps> = ({
 	show,
 	handleShow,
 }) => {
-	const { terminal } = useSelector((store: AppStore) => store.pos);
+	const { discountOption } = useSelector((store: AppStore) => store.display);
+	const [selectedDiscountOption, setSelectedDiscountOption] = useState(discountOption);
+
+	const dispatch = useDispatch();
+
 	const discountOptions = [{
 		_id: 1,
-		type: 'valor',
+		type: 'Valor',
 	},
 	{
 		_id: 2,
-		type: 'porcentaje'
+		type: 'Porcentaje'
 	}]
 
-	const [selectedDiscountOption, setSelectedDiscountOption] = useState('');
-
-	const handleSelect = (discountOption: string) => {
+	const handleSelect = (discountOption: DiscountOption) => {
 		setSelectedDiscountOption(discountOption);
 		handleShow(false);
+		dispatch(setDiscountOption(discountOption));
+		dispatch(setType('Desct'));
 	};
 
 	return (
 		<Transition appear show={show} as={Fragment}>
 			<Dialog
 				as='div'
-				// onClose={() => (selectedDiscountOption ? handleShow(false) : null)}
-				onClose={() => (handleShow(false))}
+				onClose={() => (selectedDiscountOption ? handleShow(false) : null)}
 				className='relative z-30'
 			>
 				<Transition.Child
@@ -74,17 +77,17 @@ const DiscountModal: React.FC<DiscountModalProps> = ({
 								</Dialog.Title>
 								<div className='mt-4'>
 									<RadioGroup
-										value={selectedDiscountOption}
+										value={discountOption}
 										onChange={handleSelect}
 									>
 										<RadioGroup.Label className='sr-only'>
 											Discount Options
 										</RadioGroup.Label>
 										<div className='space-y-2'>
-											{discountOptions.map((discountOption) => (
+											{discountOptions.map((option) => (
 												<RadioGroup.Option
-													key={discountOption._id}
-													value={discountOption.type}
+													key={option._id}
+													value={option.type}
 													className={({ active, checked }) =>
 														`${active
 															? 'ring-2 ring-offset-2 ring-offset-blue-300 ring-white ring-opacity-60 dark:ring-slate-500 dark:ring-offset-slate-300'
@@ -109,7 +112,7 @@ const DiscountModal: React.FC<DiscountModalProps> = ({
 																				: 'text-slate-900 dark:text-slate-50'
 																				}`}
 																		>
-																			En {discountOption.type}
+																			En {option.type}
 																		</RadioGroup.Label>
 																	</div>
 																</div>
