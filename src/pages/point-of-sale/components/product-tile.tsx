@@ -1,14 +1,14 @@
 /** @format */
 
 import React from 'react';
-import type { Product } from '../../../types';
+import type { Product } from '@/types';
 import { formatCurrency } from '@/utilities';
 
 type Props = {
 	product: Product;
 };
 
-const ProductTile = ({ product }: Props) => {
+const ProductTile: React.FC<Props> = ({ product }) => {
 	return (
 		<div
 			className='flex flex-col justify-end items-center p-0 w-48 flex-none order-none flex-grow-0'
