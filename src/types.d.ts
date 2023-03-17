@@ -40,10 +40,21 @@ export type DatabaseResponse = {
 	updatedAt: string;
 };
 
-export type Terminal = {
+export type TerminalResponse = {
 	_id: string;
 	code: string;
 	base: number;
+	isBusy: string | null;
+	warehouse: string;
+	createdAt: string;
+	updatedAt: string;
+}
+
+export type Terminal = {
+	id: string;
+	code: string;
+	base: number;
+	isBusy: string | null;
 }
 
 export type Category = {

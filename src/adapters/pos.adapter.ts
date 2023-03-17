@@ -1,3 +1,4 @@
+import { TerminalResponse } from './../types.d';
 /** @format */
 
 import { Product } from './../types.d';
@@ -69,3 +70,21 @@ export const clientsAdapter = (
 		type: client.type,
 	}));
 };
+
+export const terminalsAdapter = (response: TerminalResponse[]) => {
+	return response.map((terminal) => ({
+		id: terminal._id,
+		code: terminal.code,
+		base: terminal.base,
+		isBusy: terminal.isBusy,
+	}));
+}
+
+export const terminalAdapter = (response: TerminalResponse) => {
+	return {
+		id: response._id,
+		code: response.code,
+		base: response.base,
+		isBusy: response.isBusy,
+	};
+}

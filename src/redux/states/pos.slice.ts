@@ -14,10 +14,12 @@ export interface PosState {
 	categories: Category[];
 	products: Product[];
 	clients: Client[];
+	terminals:Terminal[];
 	terminal: Terminal | null;
 	filteredProducts: Product[];
 	selectedCategory: string | null;
 	filter: string;
+	selectedClient: Client | null;
 }
 
 const initialState: PosState = {
@@ -25,10 +27,12 @@ const initialState: PosState = {
 	categories: [],
 	products: [],
 	clients: [],
+	terminals: [],
 	terminal: null,
 	filteredProducts: [],
 	selectedCategory: null,
 	filter: '',
+	selectedClient: null,
 };
 
 const databaseSlice = createSlice({
@@ -44,6 +48,13 @@ const databaseSlice = createSlice({
 				clients: action.payload.clients,
 				terminal: null,
 				filteredProducts: action.payload.products,
+			};
+		},
+
+		setTerminals: (state, action) => {
+			return {
+				...state,
+				terminals: action.payload,
 			};
 		},
 
@@ -74,6 +85,13 @@ const databaseSlice = createSlice({
 			};
 		},
 
+		setSelectedClient: (state, action) => {
+			return {
+				...state,
+				selectedClient: action.payload,
+			};
+		},
+
 		resetPOS: (state, action) => initialState,
 	},
 });
@@ -85,6 +103,8 @@ export const {
 	resetPOS,
 	filterProducts,
 	setFilter,
+	setTerminals,
+	setSelectedClient,
 } = databaseSlice.actions;
 
 export default databaseSlice.reducer;
