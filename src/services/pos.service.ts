@@ -5,7 +5,7 @@ import { DatabasesResponse } from "../types.d";
 export const fetchDatabases = () => {
 	const controller = loadAbort();
 	return {
-		call: axios.get<DatabasesResponse>('/api/warehouses', {
+		call: axios.get<DatabasesResponse>('/warehouses', {
 			signal: controller.signal,
 		}),
 		controller,

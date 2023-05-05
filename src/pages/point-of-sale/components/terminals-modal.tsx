@@ -42,7 +42,7 @@ const TerminalsModal: React.FC<TerminalsModalProps> = ({
 
 	const fetchTerminals = async () => {
 		setLoading(true);
-		const { data } = await axios.get('/api/terminals');
+		const { data } = await axios.get('/devices');
 		dispatch(setTerminals(terminalsAdapter(data)));
 		const selected = data.find(
 			(t: TerminalResponse) => t.isBusy === user.id,

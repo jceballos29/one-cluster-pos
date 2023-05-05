@@ -27,10 +27,10 @@ const PointOfSale: React.FC<PointOfSaleProps> = () => {
 	useEffect(() => {
 		axios
 			.all([
-				axios.get('/api/categories'),
-				axios.get('/api/products'),
-				axios.get('/api/warehouses/detail'),
-				axios.get('/api/clients'),
+				axios.get('/categories'),
+				axios.get('/products'),
+				axios.get('/warehouses'),
+				axios.get('/parties'),
 			])
 			.then(
 				axios.spread((categories, products, warehouses, clients,) => {

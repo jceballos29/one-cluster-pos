@@ -7,7 +7,7 @@ import { LoginRequest, LoginResponse } from '@/types.d';
 export const login = (data: LoginRequest) => {
 	const controller = loadAbort();
 	return {
-		call: axios.post<LoginResponse>('/api/auth/login', data, {
+		call: axios.post<LoginResponse>('/auth/login', data, {
 			signal: controller.signal,
 		}),
 		controller,
@@ -17,7 +17,7 @@ export const login = (data: LoginRequest) => {
 export const session = () => {
 	const controller = loadAbort();
 	return {
-		call: axios.get('/api/auth/session', {
+		call: axios.get('/auth/session', {
 			signal: controller.signal,
 		}),
 		controller,
@@ -27,7 +27,7 @@ export const session = () => {
 export const logout = () => {
 	const controller = loadAbort();
 	return {
-		call: axios.post('/api/auth/logout', {
+		call: axios.post('/auth/logout', {
 			signal: controller.signal,
 		}),
 		controller,

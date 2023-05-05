@@ -76,10 +76,7 @@ export type Product = {
 	id: string;
 	name: string;
 	image: string;
-	price: {
-		retail: number;
-		wholesale: number;
-	},
+	price: number;
 	quantity: number
 	category: string;
 }
@@ -88,10 +85,7 @@ export type ProductResponse = {
 	_id: string;
 	name: string;
 	image: string;
-	price: {
-		retail: number;
-		wholesale: number;
-	},
+	list_price: number;
 	quantity: number
 	warehouse: string;
 	category: string;

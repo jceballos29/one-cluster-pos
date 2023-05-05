@@ -52,10 +52,7 @@ export const productsAdapter = (
 		id: product._id,
 		name: product.name,
 		image: product.image,
-		price: {
-			retail: product.price.retail,
-			wholesale: product.price.wholesale,
-		},
+		price: product.list_price,
 		quantity: product.quantity,
 		category: product.category,
 	}));
