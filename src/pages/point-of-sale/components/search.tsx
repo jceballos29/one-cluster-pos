@@ -109,7 +109,7 @@ const Search: React.FC = () => {
 									<span
 										className={`text-slate-400 dark:text-slate-400 font-light italic`}
 									>
-										{formatCurrency(product.price['retail'])}
+										{formatCurrency(product.price)}
 									</span>
 								</button>
 							))

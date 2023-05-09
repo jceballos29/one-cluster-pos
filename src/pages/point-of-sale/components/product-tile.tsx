@@ -1,14 +1,14 @@
 /** @format */
 
 import React from 'react';
-import type { Product } from '@/types';
+import type { Product } from '../../../types';
 import { formatCurrency } from '@/utilities';
 
 type Props = {
 	product: Product;
 };
 
-const ProductTile: React.FC<Props> = ({ product }) => {
+const ProductTile = ({ product }: Props) => {
 	return (
 		<div
 			className='flex flex-col justify-end items-center p-0 w-48 flex-none order-none flex-grow-0'
@@ -32,7 +32,7 @@ const ProductTile: React.FC<Props> = ({ product }) => {
 						top: '-43px',
 						borderRadius: '64px',
 					}}
-					src=''
+					src={product.image}
 					alt={product.name}
 				/>
 				<h4
@@ -45,7 +45,7 @@ const ProductTile: React.FC<Props> = ({ product }) => {
 					className='absolute w-48 mt-[40%] not-italic font-normal text-base leading-6
                         text-center text-blue-600'
 				>
-					{formatCurrency(product.price.wholesale)}
+					{formatCurrency(product.price)}
 				</h4>
 				<h5
 					className='absolute w-48 mt-[55%] h-4 not-italic font-light text-xs leading-4

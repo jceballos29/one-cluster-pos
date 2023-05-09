@@ -8,7 +8,8 @@ import { setTerminal } from '@/redux/states/pos.slice';
 
 const TerminalSelector: React.FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const { warehouse, terminal } = useSelector(
+	const [loading, setLoading] = useState(true);
+	const { warehouse, terminal, terminals } = useSelector(
 		(store: AppStore) => store.pos,
 	);
 
@@ -39,7 +40,7 @@ const TerminalSelector: React.FC = () => {
 				<TerminalsModal
 					show={isOpen}
 					handleShow={handleShow}
-					terminals={warehouse?.terminals || []}
+					terminals={terminals}
 				/>
 				<button
 					onClick={() => handleShow(true)}

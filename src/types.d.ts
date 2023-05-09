@@ -40,10 +40,21 @@ export type DatabaseResponse = {
 	updatedAt: string;
 };
 
-export type Terminal = {
-	_id: string;
+export type TerminalResponse = {
+	id: number;
 	code: string;
 	base: number;
+	isBusy: string | null;
+	warehouse: string;
+	createdAt: string;
+	updatedAt: string;
+}
+
+export type Terminal = {
+	id: string;
+	code: string;
+	base: number;
+	isBusy: string | null;
 }
 
 export type Category = {
@@ -53,7 +64,7 @@ export type Category = {
 };
 
 export type CategoriesResponse = {
-	_id: string;
+	id: number;
 	name: string;
 	products: string[];
 	warehouse: string;
@@ -65,25 +76,19 @@ export type Product = {
 	id: string;
 	name: string;
 	image: string;
-	price: {
-		retail: number;
-		wholesale: number;
-	},
+	price: number;
 	quantity: number
 	category: string;
 }
 
 export type ProductResponse = {
-	_id: string;
+	id: string;
 	name: string;
-	image: string;
-	price: {
-		retail: number;
-		wholesale: number;
-	},
+	image_url: string;
+	list_price: number;
 	quantity: number
 	warehouse: string;
-	category: string;
+	categories_all: number[];
 	createdAt: string;
 	updatedAt: string;
 }
@@ -95,7 +100,7 @@ export type Client = {
 }
 
 export type ClientResponse = {
-	_id: string;
+	id: string;
 	name: string;
 	type: 'retail' | 'wholesale';
 	createdAt: string;
