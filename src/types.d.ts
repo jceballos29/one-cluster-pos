@@ -41,7 +41,7 @@ export type DatabaseResponse = {
 };
 
 export type TerminalResponse = {
-	_id: string;
+	id: number;
 	code: string;
 	base: number;
 	isBusy: string | null;
@@ -64,7 +64,7 @@ export type Category = {
 };
 
 export type CategoriesResponse = {
-	_id: string;
+	id: number;
 	name: string;
 	products: string[];
 	warehouse: string;
@@ -82,13 +82,13 @@ export type Product = {
 }
 
 export type ProductResponse = {
-	_id: string;
+	id: string;
 	name: string;
-	image: string;
+	image_url: string;
 	list_price: number;
 	quantity: number
 	warehouse: string;
-	category: string;
+	categories_all: number[];
 	createdAt: string;
 	updatedAt: string;
 }
@@ -100,7 +100,7 @@ export type Client = {
 }
 
 export type ClientResponse = {
-	_id: string;
+	id: string;
 	name: string;
 	type: 'retail' | 'wholesale';
 	createdAt: string;

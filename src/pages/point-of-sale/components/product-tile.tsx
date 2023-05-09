@@ -32,7 +32,7 @@ const ProductTile = ({ product }: Props) => {
 						top: '-43px',
 						borderRadius: '64px',
 					}}
-					src=''
+					src={product.image}
 					alt={product.name}
 				/>
 				<h4
@@ -45,7 +45,7 @@ const ProductTile = ({ product }: Props) => {
 					className='absolute w-48 mt-[40%] not-italic font-normal text-base leading-6
                         text-center text-blue-600'
 				>
-					{formatCurrency(product.price.wholesale)}
+					{formatCurrency(product.price)}
 				</h4>
 				<h5
 					className='absolute w-48 mt-[55%] h-4 not-italic font-light text-xs leading-4

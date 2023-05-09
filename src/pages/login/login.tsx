@@ -66,7 +66,8 @@ const Login: React.FC<LoginProps> = () => {
 				LoginService(data as LoginRequest),
 			);
 			const { user, token } = response.data as LoginResponse;
-			setAccessToken(token);
+			const session = `${user.username}:${user._id}:${token}`
+			setAccessToken(session);
 			dispatch(login(userAdapter(user)));
 		} catch (e) {}
 	};

@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import { loadAbort } from '@/utilities/load-abort-axios.utility';
-import { LoginRequest, LoginResponse } from '@/types.d';
+import { LoginRequest, LoginResponse, UserResponse } from '@/types.d';
 
 export const login = (data: LoginRequest) => {
 	const controller = loadAbort();

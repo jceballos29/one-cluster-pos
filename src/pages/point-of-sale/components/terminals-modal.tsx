@@ -58,9 +58,9 @@ const TerminalsModal: React.FC<TerminalsModalProps> = ({
 	const handleBusyTerminal = async (data: Terminal) => {
 		try {
 			if (selectedTerminal) {
-				await axios.put(`/api/terminals/free/${selectedTerminal.id}`);
+				//await axios.put(`/api/terminals/free/${selectedTerminal.id}`);
 			}
-			await axios.put(`/api/terminals/busy/${data.id}`);
+			//await axios.put(`/api/terminals/busy/${data.id}`);
 			setSelectedTerminal(data);
 			dispatch(setTerminal(data));
 			handleShow(false);

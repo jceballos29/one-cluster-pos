@@ -9,7 +9,9 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 // axios.defaults.baseURL = 'https://point-of-sale-api-production.up.railway.app';
-axios.defaults.baseURL = 'http://localhost:8010/tryton';
+
+// url should be 'http://localhost:8010/${database.name}'
+axios.defaults.baseURL = 'https://api2.onecluster.org/Licorera';
 
 ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement,

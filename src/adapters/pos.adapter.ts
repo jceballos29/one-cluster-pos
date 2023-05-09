@@ -39,7 +39,7 @@ export const categoriesAdapter = (
 	response: CategoriesResponse,
 ): Category[] => {
 	return response.map((category) => ({
-		id: category._id,
+		id: String(category.id),
 		name: category.name,
 		products: category.products.length,
 	}));
@@ -49,12 +49,12 @@ export const productsAdapter = (
 	response: ProductResponse[],
 ): Product[] => {
 	return response.map((product) => ({
-		id: product._id,
+		id: product.id,
 		name: product.name,
-		image: product.image,
+		image: product.image_url,
 		price: product.list_price,
 		quantity: product.quantity,
-		category: product.category,
+		category: String(product.categories_all[0]),
 	}));
 };
 
@@ -62,7 +62,7 @@ export const clientsAdapter = (
 	response: ClientResponse[],
 ): Client[] => {
 	return response.map((client) => ({
-		id: client._id,
+		id: client.id,
 		name: client.name,
 		type: client.type,
 	}));
@@ -70,7 +70,7 @@ export const clientsAdapter = (
 
 export const terminalsAdapter = (response: TerminalResponse[]) => {
 	return response.map((terminal) => ({
-		id: terminal._id,
+		id: String(terminal.id),
 		code: terminal.code,
 		base: terminal.base,
 		isBusy: terminal.isBusy,
@@ -79,7 +79,7 @@ export const terminalsAdapter = (response: TerminalResponse[]) => {
 
 export const terminalAdapter = (response: TerminalResponse) => {
 	return {
-		id: response._id,
+		id: String(response.id),
 		code: response.code,
 		base: response.base,
 		isBusy: response.isBusy,

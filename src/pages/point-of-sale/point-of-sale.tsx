@@ -29,7 +29,7 @@ const PointOfSale: React.FC<PointOfSaleProps> = () => {
 			.all([
 				axios.get('/categories'),
 				axios.get('/products'),
-				axios.get('/warehouses'),
+				axios.get('/warehouses/detail'),
 				axios.get('/parties'),
 			])
 			.then(
