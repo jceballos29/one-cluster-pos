@@ -15,13 +15,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Categories, Navbar, Products, Keypad } from './components';
 import { AppStore } from '@/redux/store';
 import ClientsModal from './components/clients-modal';
+import TablesModal from './components/tables-modal';
 
-export interface PointOfSaleProps {}
+export interface PointOfSaleProps { }
 
 const PointOfSale: React.FC<PointOfSaleProps> = () => {
 	const [loading, setLoading] = useState(true);
 	const [showClient, setShowClient] = useState(false)
-	const { selectedClient } = useSelector((store:AppStore) => store.pos)
+	const { selectedClient } = useSelector((store: AppStore) => store.pos)
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -52,7 +53,8 @@ const PointOfSale: React.FC<PointOfSaleProps> = () => {
 		<Loader />
 	) : (
 		<>
-			<ClientsModal show={showClient} handleShow={setShowClient}/>
+			<ClientsModal show={showClient} handleShow={setShowClient} />
+			<TablesModal show={showClient} handleShow={setShowClient} />
 			<div className='w-full h-full flex overflow-hidden relative bg-blue-50 dark:bg-slate-900 transition-colors'>
 				<Navbar />
 				<div className='h-full w-full flex overflow-hidden p-6 pt-[96px] pr-[448px] gap-6'>
@@ -60,12 +62,29 @@ const PointOfSale: React.FC<PointOfSaleProps> = () => {
 						<Categories />
 						<Products />
 					</div>
-				<div className='w-1/4 h-full'>
-					<Keypad />
-				</div>
+					<div className='w-1/4 h-full'>
+						<Keypad />
+					</div>
 				</div>
 				<div className='absolute top-0 right-0 h-full w-[448px] p-6 z-20'>
-					<div className='w-full h-full bg-slate-300 shadow-md rounded-xl'></div>
+					<div className='w-full h-full bg-slate-300 shadow-md rounded-xl p-2 flex flex-col gap-4'>
+						<div className='w-full h-14 bg-white rounded-xl'>
+							<button
+								onClick={() => setShowClient(true)}
+								className='w-20 bg-red-600 text-white text-lg font-bold py-3 rounded-xl capitalize'>
+								Lugar
+							</button>
+						</div>
+						<div className='w-full h-full bg-blue-50 rounded-xl'>
+							<button
+								onClick={() => setShowClient(true)}
+								className='w-full bg-green-600 text-white text-lg font-bold py-3 rounded-xl capitalize'>
+								{
+									selectedClient ? selectedClient.name : 'Seleccionar cliente'
+								}
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</>

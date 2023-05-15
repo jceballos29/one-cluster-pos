@@ -27,13 +27,13 @@ const ProductTile = ({ product }: Props) => {
 				}}
 			>
 				<img
-					className='absolute w-32 h-32 bg-gray-300 flex-none order-none flex-grow-0 z-0 text-center text-sm'
+					className='absolute w-32 h-32 bg-gray-300 flex-none order-none flex-grow-0 z-0 border-0'
 					style={{
 						top: '-43px',
 						borderRadius: '64px',
 					}}
-					src={product.image}
-					alt={product.name}
+					src={product.image || '/src/assets/blank.gif'}
+					// alt='jala jala'
 				/>
 				<h4
 					className='w-47 mt-[-20px] not-italic font-semibold text-lg leading-5
